@@ -1,0 +1,36 @@
+@import 'sass-material-colors';
+
+$scrollbar-color-name: 'blue-grey';
+
+:root {
+    --scrollbar-track-color: #{material-color($scrollbar-color-name, '50')};
+    --scrollbar-thumb-color: #{material-color($scrollbar-color-name, '300')};
+    --scrollbar-hover-color: #{material-color($scrollbar-color-name, '400')};
+    @media (prefers-color-scheme: dark) {
+        --scrollbar-track-color: #{material-color($scrollbar-color-name, '800')};
+        --scrollbar-thumb-color: #{material-color($scrollbar-color-name, '700')};
+        --scrollbar-hover-color: #{material-color($scrollbar-color-name, '600')};
+    }
+}
+
+// 스크롤바 전체 스타일 지정
+::-webkit-scrollbar {
+    width: 12px;  // 스크롤바의 너비 (수직 스크롤바의 경우)
+    height: 12px; // 스크롤바의 높이 (수평 스크롤바의 경우)
+}
+
+// 스크롤바 트랙 (스크롤바 배경) 스타일 지정
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color); // 트랙의 배경 색상
+    border-radius: 10px;  // 트랙의 모서리 둥글기
+}
+
+// 스크롤바 핸들 (움직이는 부분) 스타일 지정
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);;    // 핸들의 배경 색상
+    border-radius: 10px; // 핸들의 모서리 둥글기
+
+    &:hover {
+        background: var(--scrollbar-hover-color); // 핸들에 마우스를 올렸을 때의 색상
+    }
+}

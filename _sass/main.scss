@@ -1,0 +1,60 @@
+@import 'normalize';
+@import 'sass-material-colors';
+
+
+:root {
+    --background-color: #{material-color('grey', '50')};
+    --text-color: #{material-color('grey', '800')};
+    --link-color: #{material-color('grey', '900')};
+
+    --table-background-color-odd: #{material-color('blue-grey', '100')};
+    --table-background-color-even: #{material-color('blue-grey', '50')};
+
+    @media (prefers-color-scheme: dark) {
+            --background-color: #{material-color('grey', '900')};
+            --text-color: #{material-color('grey', '100')};
+            --link-color: #{material-color('grey', '50')};
+
+            --table-background-color-odd: #{material-color('blue-grey', '800')};
+            --table-background-color-even: #{material-color('blue-grey', '900')};
+    }
+}
+
+@import 'webkit';
+@import 'sidebar';
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+article {
+    padding: 1em;
+    margin-bottom: 1em;
+}
+a {
+    color: var(--link-color);
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+table {
+    border-spacing: 2px;
+    td, th {
+      padding: 0.5rem;
+    }
+    tbody tr {
+      &:nth-child(odd) {
+        background-color: var(--table-background-color-odd);
+      }
+  
+      &:nth-child(even) {
+        background-color: var(--table-background-color-even)
+      }
+    }
+  }
+  
