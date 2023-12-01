@@ -1,36 +1,143 @@
 @import 'normalize';
 @import 'sass-material-colors';
+@import url('//cdn.jsdelivr.net/gh/snz-hayden/toolo/fonts/notosans_kr/notosans_kr_ver2.css');
+@import url('//cdn.jsdelivr.net/npm/@openfonts/nanum-gothic-coding_korean@1.44.1/index.min.css');
 
 
 :root {
     --background-color: #{material-color('grey', '50')};
-    --text-color: #{material-color('grey', '800')};
-    --link-color: #{material-color('grey', '900')};
+    --text-color: #{material-color('grey', '900')};
+    --link-color: #{material-color('grey', '700')};
 
     --table-background-color-odd: #{material-color('blue-grey', '100')};
     --table-background-color-even: #{material-color('blue-grey', '50')};
+    --blockquote-background-color: #{material-color('teal', '50')};
+    --blockquote-border-color: #{material-color('teal', '100')};
+    --ui-mark-color: #{material-color('teal', '500')};
+
+    --sidebar-toc1-background-color: #{material-color('blue-grey', '50')};
 
     @media (prefers-color-scheme: dark) {
             --background-color: #{material-color('grey', '900')};
-            --text-color: #{material-color('grey', '100')};
+            --text-color: #{material-color('grey', '400')};
             --link-color: #{material-color('grey', '50')};
 
             --table-background-color-odd: #{material-color('blue-grey', '800')};
             --table-background-color-even: #{material-color('blue-grey', '900')};
+            --blockquote-background-color: #{material-color('teal', '900')};
+            --blockquote-border-color: #{material-color('teal', '800')};
+            --ui-mark-color: #{material-color('teal', '500')};
+
+            --sidebar-toc1-background-color: #{material-color('blue-grey', '900')};
     }
 }
 
 @import 'webkit';
 @import 'sidebar';
+@import 'codeblock';
+
+$article-width: 1000px;
 
 body {
+    font-family: 'Noto Sans KR', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
 }
+code {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.9em;
+    padding: 0.2em;
+    border-radius: 0.2em;
+    li & {
+      background-color: var(--table-background-color-odd);
+    }
+}
 
-article {
-    padding: 1em;
+header {
+    padding: 0.5rem;
     margin-bottom: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    a {
+      display: block;
+      cursor: pointer;
+    }
+    h1 {
+      margin-left: 1rem;
+    }
+}
+article {
+    padding: 1rem;
+    margin-bottom: 1em;
+    max-width: $article-width;
+    margin: auto;
+    line-height: 1.8;
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    blockquote {
+      background-color: var(--blockquote-background-color);
+      border-left: 0.5rem solid var(--blockquote-border-color);
+      padding: .5rem;
+      padding-left: 1rem;
+      margin-left: .5rem;
+      margin-right: .5rem;
+    }
+    ul {
+      padding-left: 1rem;
+      list-style: none;
+      li::before {
+        content: "arrow_right";
+        font-family: 'Material Icons';
+        color: var(--ui-mark-color);
+        font-weight: bold;
+        display: inline;
+        font-size: 1em;
+        width: 1em;
+        height: 1em;
+        margin-left: -1em;
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+      li p {
+        display: inline;
+      }
+      li strong {
+        font-weight: bold;
+        color: var(--ui-mark-color);
+      }
+    }
+    table:not(.rouge-table) {
+      border-spacing: 2px;
+      min-width: 100%;
+      td, th {
+        padding: 0.5rem;
+      }
+      tbody tr {
+        &:nth-child(odd) {
+          background-color: var(--table-background-color-odd);
+        }
+    
+        &:nth-child(even) {
+          background-color: var(--table-background-color-even)
+        }
+      }
+      td:first-child {
+        font-weight: bold;
+        width: 1%;
+        white-space: nowrap;
+      }
+    }
+    
+}
+footer {
+    padding: 1em;
+    margin-top: 1em;
+    max-width: $article-width;
+    margin: auto;
 }
 a {
     color: var(--link-color);
@@ -42,19 +149,3 @@ a {
 }
 
 
-table {
-    border-spacing: 2px;
-    td, th {
-      padding: 0.5rem;
-    }
-    tbody tr {
-      &:nth-child(odd) {
-        background-color: var(--table-background-color-odd);
-      }
-  
-      &:nth-child(even) {
-        background-color: var(--table-background-color-even)
-      }
-    }
-  }
-  

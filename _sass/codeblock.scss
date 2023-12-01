@@ -1,0 +1,156 @@
+
+:root {
+  --color-primary: #24292f;
+  --color-background: #f6f8fa;
+  --color-red: #cf222e;
+  --color-white: #f6f8fa;
+  --color-dark-red: #82071e;
+  --color-orange: #953800;
+  --color-green: #116329;
+  --color-light-green: #dafbe1;
+  --color-blue: #0550ae;
+  --color-purple: #8250df;
+  --color-gray: #6e7781;
+  @media (prefers-color-scheme: dark) {
+    --color-primary: #f6f8fa;
+    --color-background: #24292f;
+    --color-red: #cf222e;
+    --color-white: #24292f;
+    --color-dark-red: #82071e;
+    --color-orange: #953800;
+    --color-green: #116329;
+    --color-light-green: #dafbe1;
+    --color-blue: #0550ae;
+    --color-purple: #8250df;
+    --color-gray: #6e7781;
+  }
+}
+
+.highlight code {
+  padding: 0;
+}
+.highlight table td {
+  padding: 5px;
+}
+.highlight table pre {
+  margin: 0;
+}
+.highlight .gl {
+  color: var(--color-gray);
+  border-right: 1px solid var(--color-gray);
+}
+
+.highlight, .highlight .w {
+  color: var(--color-primary);
+  background-color: var(--color-background);
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
+  color: var(--color-red);
+}
+.highlight .gr {
+  color: var(--color-white);
+}
+.highlight .gd {
+  color: var(--color-dark-red);
+  background-color: var(--color-white);
+}
+.highlight .nb {
+  color: var(--color-orange);
+}
+.highlight .nc {
+  color: var(--color-orange);
+}
+.highlight .no {
+  color: var(--color-orange);
+}
+.highlight .nn {
+  color: var(--color-orange);
+}
+.highlight .sr {
+  color: var(--color-green);
+}
+.highlight .na {
+  color: var(--color-green);
+}
+.highlight .nt {
+  color: var(--color-green);
+}
+.highlight .gi {
+  color: var(--color-green);
+  background-color: var(--color-light-green);
+}
+.highlight .kc {
+  color: var(--color-blue);
+}
+.highlight .l, .highlight .ld, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: var(--color-blue);
+}
+.highlight .sb {
+  color: var(--color-blue);
+}
+.highlight .bp {
+  color: var(--color-blue);
+}
+.highlight .ne {
+  color: var(--color-blue);
+}
+.highlight .nl {
+  color: var(--color-blue);
+}
+.highlight .py {
+  color: var(--color-blue);
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
+  color: var(--color-blue);
+}
+.highlight .o, .highlight .ow {
+  color: var(--color-blue);
+}
+.highlight .gh {
+  color: var(--color-blue);
+  font-weight: bold;
+}
+.highlight .gu {
+  color: var(--color-blue);
+  font-weight: bold;
+}
+.highlight .s, .highlight .sa, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .ss {
+  color: var(--color-purple);
+}
+.highlight .nd {
+  color: var(--color-purple);
+}
+.highlight .nf, .highlight .fm {
+  color: var(--color-purple);
+}
+
+.highlight .err {
+  color: var(--color-white);
+  background-color: var(--color-dark-red);
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: var(--color-gray);
+}
+
+
+.highlight .gt {
+  color: var(--color-gray);
+}
+
+.highlight .ni {
+  color: var(--color-primary);
+}
+
+.highlight .si {
+  color: var(--color-primary);
+}
+
+.highlight .ge {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.highlight .gs {
+  color: var(--color-primary);
+  font-weight: bold;
+}

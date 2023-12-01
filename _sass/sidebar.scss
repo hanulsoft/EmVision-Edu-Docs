@@ -2,21 +2,14 @@
 
 $sidebar-width: 250px;
 
-:root {
-    --sidebar-background-color: #{material-color('blue-grey', '100')};
-    @media (prefers-color-scheme: dark) {
-        --sidebar-background-color: #{material-color('blue-grey', '900')};
-    }
-}
-
-article {
+main {
     transition: margin 0.3s;
     &.open-sidebar {
         margin-left: $sidebar-width;
     }
 }
 aside#toc-sidebar {
-    background-color: var(--sidebar-background-color);
+    padding: 0;
     width: $sidebar-width;
     left: -$sidebar-width;
     height: 100vh;
@@ -30,8 +23,10 @@ aside#toc-sidebar {
         padding: 0;
         margin: 0;
         li {
-            padding: 0.5em;
+            padding: 0;
             a {
+                display: block;
+                padding: 0.5rem 0.5rem;
                 color: var(--link-color);
                 font-weight: bold;
                 text-decoration: none;
@@ -39,6 +34,9 @@ aside#toc-sidebar {
                     text-decoration: underline;
                 }
             }
+        }
+        li.toc-1>a{
+            background-color: var(--sidebar-toc1-background-color)
         }
     }
 }
