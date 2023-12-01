@@ -23,7 +23,6 @@ email: hanulsoft@hanulsoft.co.kr
 domain: hanulsoft.github.io
 url: https://hanulsoft.github.io
 baseurl: /EmVision-Edu-Docs
-permalink: /:title
 
 description: 하늘소프트 EmVision 교육 자료
 github_username: hanulsoft

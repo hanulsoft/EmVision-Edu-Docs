@@ -13,25 +13,33 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '\\[', right: '\\]', display: true},{left: '$', right: '$', display: false}]});">
   </script>
   <script defer src="{{ "js/onload.js" | absolute_url }}"></script>
+  <link rel="shortcut icon" href="{{ "assets/favicon.ico" | relative_url }}">
   <link rel="stylesheet" href="{{ "css/main.css" | absolute_url }}">
 </head>
 <body>
-  <a id="sidebar-toggle-button" onclick="toggleNav()"class="material-symbols-outlined">menu</a>
-  <main>
+  {% if page.url == "/" -%}
     <aside id="toc-sidebar">
-      {{ TABLE_OF_CONTENTS }}
-    </aside>
-    <article id="article">
-      {{ CONTENT }}
-      <footer>
-        <a class="license-img" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-          <img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
-        </a><br />
-        <p>
-          이 저작물은 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
-        </p>
-      </footer>
-    </article>
+  {% else -%}
+    <aside id="toc-sidebar" class="active">
+  {% endif -%}
+    {{ TABLE_OF_CONTENTS }}
+  </aside>
+  
+  {% if page.url == "/" -%}
+    <main id="main-contents">
+  {% else -%}
+    <main id="main-contents" class="open-sidebar">
+  {% endif -%}
+    <header>
+      <a id="sidebar-toggle-button" onclick="toggleNav()" class="material-symbols-outlined">menu</a>
+      <h1><a href="{{ '/' | absolute_url }}">{{ site.title }}</a></h1>
+    </header>
+    <article id="article">{{ CONTENT }}</article>
+    <hr>
+    <footer>
+        <a class="license-img" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
+        <p>이 저작물은 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.</p>
+    </footer>
   </main>
 </body>
 </html>
