@@ -7,4 +7,16 @@
 {% endif -%}
 {% capture CONTENT %}
   {{ doc.content }}
+  {% for chapter in site.data.toc -%}
+    {% assign chapter_url = chapter[0] | prepend: '/' | append: '/' -%}
+    {% if chapter_url == doc_url -%}
+      {% for sub in chapter[1] -%}
+        {% assign sub_url = chapter_url | append: sub | append: '/' -%}
+        {% assign sub_doc = site.html_pages | where: 'dir', sub_url | first -%}
+        <div id="{{ sub | slugify }}" class="sub-doc">
+          {{ sub_doc.content }}
+        </div>
+      {% endfor -%}
+    {% endif -%}
+  {% endfor -%}
 {% endcapture -%}

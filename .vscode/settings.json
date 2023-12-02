@@ -1,12 +1,16 @@
 {
-    "editor.wordWrap": "off",
-    "files.associations": {
-        "*.html": "liquid",
-        "*.json.liquid": "json",
-        "*.yaml.liquid": "yaml",
-        "*.md.liquid": "markdown",
-        "*.js.liquid": "liquid-javascript",
-        "*.css.liquid": "liquid-css",
-        "*.scss.liquid": "liquid-scss"
-    }
+  "editor.wordWrap": "off",
+  "markdownlint.config": {
+    "MD025": false,
+    "MD033": false
+  },
+  "files.associations": {
+    "*.html": "liquid",
+    "*.json.liquid": "json",
+    "*.yaml.liquid": "yaml",
+    "*.md.liquid": "markdown",
+    "*.js.liquid": "liquid-javascript",
+    "*.css.liquid": "liquid-css",
+    "*.scss.liquid": "liquid-scss"
+  }
 }

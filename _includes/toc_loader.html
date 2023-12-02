@@ -14,8 +14,10 @@ TABLE_OF_CONTENTS
 <li class="toc-1"><a href="{{ chapter_url | absolute_url }}">{{ chapter_doc.title }}</a> 
   <ul>
 {%   for doc_name in toc[1] -%}
-{%     assign doc_url = chapter_url | append: doc_name | append: "/" -%}
-{%     assign doc = site.html_pages | where: 'dir', doc_url | first -%}
+{%     assign doc_slug = doc_name | slugify -%}
+{%     assign doc_url = chapter_url | append: "#" | append: doc_slug -%}
+{%     assign doc_path = chapter_url | append: doc_name | append: "/" -%}
+{%     assign doc = site.html_pages | where: 'dir', doc_path | first -%}
     <li class="toc-2"><a href="{{ doc_url | absolute_url }}">{{ doc.title }}</a></li>
 {%   endfor -%}
   </ul>
