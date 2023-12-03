@@ -1,45 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
-{% include toc_loader.html -%}
-{% include article_loader.html -%}
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{{ site.title }}</title>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '\\[', right: '\\]', display: true},{left: '$', right: '$', display: false}]});">
-  </script>
-  <script defer src="{{ "js/onload.js" | absolute_url }}"></script>
-  <link rel="shortcut icon" href="{{ "assets/favicon.ico" | relative_url }}">
-  <link rel="stylesheet" href="{{ "css/main.css" | absolute_url }}">
-</head>
+{% include head.html -%}
 <body>
-  {% if page.url == "/" -%}
-    <aside id="toc-sidebar">
-  {% else -%}
-    <aside id="toc-sidebar" class="active">
-  {% endif -%}
-    {{ TABLE_OF_CONTENTS }}
-  </aside>
-  
-  {% if page.url == "/" -%}
-    <main id="main-contents">
-  {% else -%}
-    <main id="main-contents" class="open-sidebar">
-  {% endif -%}
-    <header>
-      <a id="sidebar-toggle-button" onclick="toggleNav()" class="material-symbols-outlined">menu</a>
-      <h1><a href="{{ '/' | absolute_url }}">{{ site.title }}</a></h1>
-    </header>
+{% if page.url == "/" -%}
+<main id="main-contents">
+{% else -%}
+<main id="main-contents" class="open-sidebar">
+{% endif -%}
+    {% include nav.html -%}
+    {% include header.html -%}
     <article id="article">{{ CONTENT }}</article>
     <hr>
-    <footer>
-        <a class="license-img" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
-        <p>이 저작물은 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.</p>
-    </footer>
-  </main>
+    {% include footer.html -%}
+</main>
 </body>
 </html>

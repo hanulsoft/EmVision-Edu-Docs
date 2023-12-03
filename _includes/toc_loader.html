@@ -24,10 +24,10 @@ TABLE_OF_CONTENTS
 </li>
 {% endfor -%}
 {% comment -%} 종이책 버전 {% endcomment %}
-{% assign textbook_dir = "/" | append: site.docsurl | append: "textbook" | append: "/" -%}
+{% assign textbook_dir = "/" | append: site.docsurl | append: "TEXTBOOK" | append: "/" -%}
 {% assign textbook_doc = site.html_pages | where: 'dir', textbook_dir | first -%}
 <li class="toc-1">
-  <a href="{{ site.docsurl | append: "textbook" | absolute_url }}">{{ textbook_doc.title }}</a>
+  <a href="{{ site.docsurl | append: "TEXTBOOK" | absolute_url }}">{{ textbook_doc.title }}</a>
 </li>
 {% comment -%} 버전 기록 {% endcomment %}
 {% assign changes_dir = "/CHANGES/" -%}

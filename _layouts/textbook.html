@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% include head.html -%}
+<body class="print-mode">
+{% if page.url == "/" -%}
+<main id="main-contents">
+{% else -%}
+<main id="main-contents" class="open-sidebar">
+{% endif -%}
+    {% include nav.html -%}
+    {% include header.html -%}
+    <article id="article" class="print">
+    {% for toc_item in site.data.toc -%}
+        {% assign chapter_url = toc_item[0] | prepend: '/' | append: '/' -%}
+        {% assign chapter_doc = site.html_pages | where: 'dir', chapter_url | first -%}
+        {{ chapter_doc.content | markdownify }}
+        {% for sub_item in toc_item[1] -%}
+            {% assign sub_url = sub_item | prepend: chapter_url | append: '/' -%}
+            {% assign sub_doc = site.html_pages | where: 'dir', sub_url | first -%}
+            {{ sub_doc.content | markdownify }} 
+        {% endfor -%}
+    {% endfor -%}
+    </article>
+    <hr>
+    {% include footer.html -%}
+</main>
+</body>
+</html>

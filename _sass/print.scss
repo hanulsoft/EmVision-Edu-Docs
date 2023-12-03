@@ -1,0 +1,38 @@
+@mixin printout {
+  #article.print {
+    font-size: 10pt;
+    width: 210mm; /* A4 크기의 너비 */
+    height: calc(297mm - 10mm); /* A4 크기의 높이 */
+    padding: 20mm;
+    margin: 10mm auto;
+    border: 1px solid #d3d3d3;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    page-break-after: always; /* 인쇄 시 페이지 구분 */
+  }
+}
+
+@media print {
+  @include printout;
+  body * {
+    visibility: hidden;
+  }
+  main,
+  main.open-sidebar {
+    margin: 0;
+  }
+  #article * {
+    visibility: visible;
+  }
+}
+body.print-mode {
+  @include printout;
+}
+
+@page {
+  margin: 0mm;
+  size: A4;
+  width: 210mm; /* A4 크기의 너비 */
+  height: 297mm; /* A4 크기의 높이 */
+}
