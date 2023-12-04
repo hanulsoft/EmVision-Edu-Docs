@@ -7,13 +7,13 @@
 {% else -%}
 <main id="main-contents" class="open-sidebar print-mode">
 {% endif -%}
-    {% include nav.html -%}
-    {% include header.html -%}
+{% include nav.html -%}
+{% include header.html -%}
 <div id="print-container">
 <article id="article" class="print">
     <div class="print-page">
         <div class="print-content" style="height: 100%;">
-        <h1>목차</h1>
+        <h1 class="main-title">목차</h1>
         <ul id="toc-list"></ul>
         </div>
     </div>
@@ -38,18 +38,41 @@
 
 <script>
 window.onload = () => {
-    var domPageContent = document.querySelectorAll('.print-content');
-    var domContentHeight = getElementHeight(domPageContent[0]);
-    var domContentWidth = getElementWidth(domPageContent[0]);
-    var rawContents = document.getElementById('print-raw-contents');
-    var rawContentsNodes = Array.from(rawContents.childNodes);
-    var tocList = document.getElementById('toc-list');
+    pageGenerate();
+    pageFitting();
+    window.addEventListener('resize', pageFitting);
+};
+window.onbeforeprint = () => {
+    let domArticle = document.getElementById('article');
+    domArticle.style.zoom = 1;
+};
+window.onafterprint = () => {
+    pageFitting();
+};
+function pageFitting() {
+    let domPrintContainer = document.getElementById('print-container');
+    let domArticle = document.getElementById('article');
+    let domPage = document.querySelector('.print-page');
+    let widthPrintContainer = getElementWidth(domPrintContainer);
+    let widthArticle = getElementWidth(domArticle);
+    let widthPage = getElementWidth(domPage);
 
-    var currentPageContainer = createNewPage();
-    var currentPageContent = currentPageContainer.querySelector('.print-content');
-    var currentHeight = 0;
-    var linkList = null;
-    var pageNumber = 1;
+    let scale = widthPrintContainer / widthPage;
+    domArticle.style.zoom = `${scale - 0.5}`;
+}
+function pageGenerate() {
+    let domPageContent = document.querySelectorAll('.print-content');
+    let domContentHeight = getElementHeight(domPageContent[0]);
+    let domContentWidth = getElementWidth(domPageContent[0]);
+    let rawContents = document.getElementById('print-raw-contents');
+    let rawContentsNodes = Array.from(rawContents.childNodes);
+    let tocList = document.getElementById('toc-list');
+
+    let currentPageContainer = createNewPage();
+    let currentPageContent = currentPageContainer.querySelector('.print-content');
+    let currentHeight = 0;
+    let linkList = null;
+    let pageNumber = 1;
 
     rawContentsNodes.forEach(node => {
         // 노드 안에 하이퍼링크가 있는 경우 처리
@@ -105,7 +128,7 @@ window.onload = () => {
             }
         }
     });
-};
+}
 function getElementHeight(element) {
     var styles = window.getComputedStyle(element);
     var margin = parseFloat(styles['marginTop']) +

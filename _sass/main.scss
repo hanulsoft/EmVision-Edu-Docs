@@ -86,6 +86,7 @@ header {
   justify-content: flex-start;
   align-items: center;
   background-color: var(--background-color);
+  z-index: 99;
   a {
     display: block;
     cursor: pointer;
