@@ -2,15 +2,15 @@
 title: SW 개발환경
 ---
 
-# EmVision 소프트웨어 개발 환경
+## EmVision 소프트웨어 개발 환경
 
-## 운영체제
+### 운영체제
 
 EmVision은 L4T(Linux for Tegra) 운영체제를 사용합니다. L4T는 NVIDIA Jetson 시리즈의 모듈에 탑재되어 있는 운영체제로, 기본 탑재되어있는 L4T 35.4.1은 Ubuntu 20.04 LTS를 기반으로 하고 있습니다.
 
 > EmVision은 NVIDIA Jetson 시리즈의 모듈을 사용합니다. 따라서, ROS등 NVIDIA Jetson 시리즈의 모듈이 지원하는 운영체제를 사용하는 것이 가능하지만 현재 하늘소프트는 L4T에 대한 기술지원만 제공하고 있습니다.
 
-## JetPack
+### JetPack
 
 NVIDIA JetPack SDK는 NVIDIA Jetson 플랫폼을 위한 포괄적인 소프트웨어 번들로, 이를 통해 AI 및 컴퓨터 비전 애플리케이션을 더 빠르고 쉽게 구축할 수 있습니다. JetPack은 Linux 운영 체제, NVIDIA CUDA, cuDNN, TensorRT와 같은 핵심 라이브러리 및 API, 그리고 Jetson 보드를 위한 드라이버 및 툴을 포함하고 있습니다.
 

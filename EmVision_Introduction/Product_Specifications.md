@@ -2,9 +2,9 @@
 title: 사양
 ---
 
-# EmVision 사양
+## EmVision 사양
 
-## 공통사양
+### 공통사양
 
 EmVision은 NVIDIA 기반의 강력한 비전 AI 개발 플랫폼으로, 고급 기능과 뛰어난 사양을 갖추고 있습니다. 이 장치는 512GB의 M.2 MVMe SSD를 탑재하여 빠른 데이터 액세스와 넉넉한 저장 공간을 제공합니다. 1Gbps Ethernet 연결로 빠른 네트워크 속도를 지원하며, 여러 해상도와 프레임 속도를 지원하는 고성능 카메라를 포함하여 다양한 비디오 처리 요구 사항을 충족합니다.
 
@@ -21,7 +21,7 @@ EmVision은 NVIDIA 기반의 강력한 비전 AI 개발 플랫폼으로, 고급 
 | 카메라 출력 포맷 | Raw 10bit Bayer                                                                                  |
 |      카메라 모드 | 3280x2464(21fps)<br>3280x1848(28fps)<br>1920x1080(30fps)<br>1640x1232(30fps)<br>1280x720(60fps)​ |
 
-## 각 모델의 연산 성능 및 전력 소모
+### 각 모델의 연산 성능 및 전력 소모
 
 - **AI 성능:** 다양한 모델에서 AI 처리 능력이 다릅니다. ON<sup>4</sup>는 20 TOPs, ON<sup>8</sup>은 40 TOPs, OX<sup>8</sup>은 70 TOPs, OX<sup>16</sup>은 100 TOPs로, AI 학습 및 응용 프로그램 개발에 따라 적합한 모델을 선택할 수 있습니다.
 
@@ -34,7 +34,6 @@ EmVision은 NVIDIA 기반의 강력한 비전 AI 개발 플랫폼으로, 고급 
 이러한 요소들을 고려하여 AI 및 컴퓨터 비전 프로젝트를 위한 EmVision 모델을 선택하세요.
 
 <style>#emVision-spec {display: inline-block; margin: .5em .2em;} #emVision-spec td {font-size: 1em;}</style>
-<div style="white-space: nowrap; overflow-x: auto; overflow-y: hidden;">
 <table id="emVision-spec">
   <thead>
     <tr>
@@ -89,6 +88,5 @@ EmVision은 NVIDIA 기반의 강력한 비전 AI 개발 플랫폼으로, 고급 
     </tr>
   </tbody>
 </table>
-</div>
 
 > **AI 성능**: TOPs(Tera Operations Per Second)는 초당 테라 연산 수를 나타내는 지표로, 주로 AI 및 딥러닝 하드웨어의 성능을 측정하는 데 사용됩니다. 이는 하드웨어가 초당 처리할 수 있는 연산의 총량을 의미하며, 높은 TOPs 값은 더 많은 연산을 빠르게 처리할 수 있음을 나타냅니다. AI 프로세서나 그래픽 카드에서 TOPs는 특히 중요한 지표로, 복잡한 딥러닝 모델과 알고리즘의 효율적인 처리 능력을 반영합니다. 따라서 AI 응용 프로그램과 태스크에 대한 하드웨어의 적합성을 평가하는 데 TOPs는 핵심적인 역할을 합니다.

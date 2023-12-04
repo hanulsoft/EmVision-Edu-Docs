@@ -1,34 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap');
+
 @mixin printout {
-  #article.print {
-    font-size: 10pt;
-    width: 210mm; /* A4 크기의 너비 */
-    height: calc(297mm - 10mm); /* A4 크기의 높이 */
+  #print-container {
+    background-color: gray;
+    position: relative;
+    padding: .5rem;
+  }
+  .print-page {
+    width: 210mm; /* A4 너비 */
+    height: 297mm; /* A4 높이 */
     padding: 20mm;
     margin: 10mm auto;
-    border: 1px solid #d3d3d3;
-    background-color: #ffffff;
+    background-color: white;
+    border: 1px solid #838383;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     page-break-after: always; /* 인쇄 시 페이지 구분 */
+    position: relative;
+    span.print-page-number {
+      position: absolute;
+      bottom: 10mm;
+      right: 10mm;
+      font-size: 1em;
+      color: #333;
+    }
+  }
+  ul#toc-list {
+    padding: 0;
+    li::before {
+      content: '';
+      font-family: 'Material Icons';
+      color: #838383;
+      font-weight: bold;
+      display: inline;
+      font-size: 1em;
+      margin-right: 0.5em;
+    }
+    li {
+      line-height: 1.1;
+    }
+    li.toc-level-1 {
+      font-size: 1.5em;
+      margin-left: 0;
+      a { gap: 1em; }
+    }
+    li.toc-level-2 {
+      font-size: 1.2em;
+      margin-left: 1em;
+      a {
+        gap: .8em;
+        color: #666;
+      }
+    }
+    a {
+      display: flex;
+      justify-content: space-between;
+      text-decoration: none;
+      width: 100%;
+    }
+    span.title {
+      white-space: nowrap;
+    }
+    span.between-space {
+      flex-grow: 1;
+      border-bottom: 1px solid #838383;
+    }
+    span.page-number {
+      flex-shrink: 0;
+      font-style: italic;
+      white-space: nowrap;
+    }
+  }
+  .print-content {
+    width: 100%;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  #article.print {
+    --color-primary: #24292f;
+    --color-background: #f6f8fa;
+    --color-red: #cf222e;
+    --color-white: #f6f8fa;
+    --color-dark-red: #82071e;
+    --color-orange: #953800;
+    --color-green: #116329;
+    --color-light-green: #dafbe1;
+    --color-blue: #0550ae;
+    --color-purple: #8250df;
+    --color-gray: #6e7781;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 10pt;
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    li code,
+    p code {
+      background-color: #D3D3D3;
+    }
+    h1 {
+      margin: 1em 0em;
+      color: var(--ui-mark-color);
+      border-color: var(--ui-mark-color);
+    }
+    blockquote {
+      margin: 1em 0em;
+      padding: 0.5em 1em;
+      border-left: 6px solid #838383;
+      background-color: #F3F3F3;
+      color: #333;
+      p {
+        margin: 0;
+      }
+    }
+    table:not(.rouge-table) {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border: 2px solid #838383;
+      tr {
+        background-color: transparent;
+        border-bottom: 1px solid #838383;
+      }
+      th {
+        background-color: #C3C3C3;
+      }
+      td {
+        border-left: 1px solid #838383;
+      }
+      th, td {
+        padding: 0.1em 1em;
+        word-break: keep-all;
+        word-wrap: break-word;
+      }
+    }
+    ul {
+      li {
+        margin-bottom: 0;
+      }
+    }
+    ul.print-link-list {
+      border-top: 1px solid #838383;
+      padding: 1em;
+      li {
+        padding-left: 0em;
+      }
+      li strong {
+        color: #000;
+      }
+      li::before {
+        content: 'link';
+        color: #838383;
+        margin-right: 0.5em;
+      }
+    }
   }
 }
 
+
+
 @media print {
   @include printout;
-  body * {
-    visibility: hidden;
+  body .noPrint {
+    margin: 0;
+    padding: 0;
+    display: none;
   }
   main,
+  main.print-mode,
   main.open-sidebar {
     margin: 0;
+    padding: 0;
   }
-  #article * {
-    visibility: visible;
+  .print-page {
+    margin: 0;
+    box-shadow: none;
+    border: none;
   }
 }
-body.print-mode {
-  @include printout;
+@media screen {
+  body.print-mode {
+    @include printout;
+    #article.print {
+      transform-origin: top center;
+      // transform: scale(0.7);
+    }
+  }
 }
+
 
 @page {
   margin: 0mm;

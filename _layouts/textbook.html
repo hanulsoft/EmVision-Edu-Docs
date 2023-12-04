@@ -3,13 +3,21 @@
 {% include head.html -%}
 <body class="print-mode">
 {% if page.url == "/" -%}
-<main id="main-contents">
+<main id="main-contents" calss="print-mode">
 {% else -%}
-<main id="main-contents" class="open-sidebar">
+<main id="main-contents" class="open-sidebar print-mode">
 {% endif -%}
     {% include nav.html -%}
     {% include header.html -%}
-    <article id="article" class="print">
+<div id="print-container">
+<article id="article" class="print">
+    <div class="print-page">
+        <div class="print-content" style="height: 100%;">
+        <h1>목차</h1>
+        <ul id="toc-list"></ul>
+        </div>
+    </div>
+    <div id="print-raw-contents">        
     {% for toc_item in site.data.toc -%}
         {% assign chapter_url = toc_item[0] | prepend: '/' | append: '/' -%}
         {% assign chapter_doc = site.html_pages | where: 'dir', chapter_url | first -%}
@@ -20,9 +28,103 @@
             {{ sub_doc.content | markdownify }} 
         {% endfor -%}
     {% endfor -%}
-    </article>
-    <hr>
-    {% include footer.html -%}
+    </div>
+</article>
+</div>
+<hr class="noPrint">
+{% include footer.html -%}
 </main>
 </body>
+
+<script>
+window.onload = () => {
+    var domPageContent = document.querySelectorAll('.print-content');
+    var domContentHeight = getElementHeight(domPageContent[0]);
+    var domContentWidth = getElementWidth(domPageContent[0]);
+    var rawContents = document.getElementById('print-raw-contents');
+    var rawContentsNodes = Array.from(rawContents.childNodes);
+    var tocList = document.getElementById('toc-list');
+
+    var currentPageContainer = createNewPage();
+    var currentPageContent = currentPageContainer.querySelector('.print-content');
+    var currentHeight = 0;
+    var linkList = null;
+    var pageNumber = 1;
+
+    rawContentsNodes.forEach(node => {
+        // 노드 안에 하이퍼링크가 있는 경우 처리
+        var hyperlinks = node.querySelectorAll ? node.querySelectorAll('a') : null;
+        if (hyperlinks) {
+            hyperlinks.forEach(link => {
+                if (!linkList) {
+                    linkList = document.createElement('ul');
+                    linkList.classList.add('print-link-list');
+                }
+                let linkText = link.innerText;
+                let linkHref = link.getAttribute('href');
+                let linkItem = document.createElement('li');
+                linkItem.innerHTML = `<strong>${linkText}</strong>: ${linkHref}`;
+                linkList.appendChild(linkItem);
+            });
+        }
+    
+        currentPageContent.appendChild(node);
+        if (linkList) {
+            currentPageContent.appendChild(linkList);
+        }
+        if (node.nodeName === 'H2') {
+            let tocItem = document.createElement('li');
+            tocItem.classList.add('toc-level-2');
+            tocItem.innerHTML = `
+                <a href="#${node.id}" class="toc-item-h2">
+                    <span class="title">${node.innerText}</span>
+                    <span class="between-space"></span>
+                    <span class="page-number">${pageNumber}</span>
+                </a>`;
+            tocList.appendChild(tocItem);
+        }
+
+        // 새 페이지 생성
+        if (getElementHeight(currentPageContent) >= domContentHeight || node.nodeName === 'H1') {
+            if (linkList) linkList = null;
+            currentPageContent.removeChild(node);
+            currentPageContainer = createNewPage();
+            currentPageContainer.querySelector('.print-page-number').innerText = pageNumber++;
+            currentPageContent = currentPageContainer.querySelector('.print-content');
+            currentPageContent.appendChild(node);
+            if (node.nodeName === 'H1') {
+                let tocItem = document.createElement('li');
+                tocItem.classList.add('toc-level-1');
+                tocItem.innerHTML = `
+                    <a href="#${node.id}" class="toc-item-h1">
+                        <span class="title">${node.innerText}</span>
+                        <span class="between-space"></span>
+                        <span class="page-number">${pageNumber-1}</span>
+                    </a>`;
+                tocList.appendChild(tocItem);
+            }
+        }
+    });
+};
+function getElementHeight(element) {
+    var styles = window.getComputedStyle(element);
+    var margin = parseFloat(styles['marginTop']) +
+        parseFloat(styles['marginBottom']);
+    return Math.ceil(element.offsetHeight + margin);
+}
+function getElementWidth(element) {
+    var styles = window.getComputedStyle(element);
+    var margin = parseFloat(styles['marginLeft']) +
+        parseFloat(styles['marginRight']);
+    return Math.ceil(element.offsetWidth + margin);
+}
+function createNewPage() {
+    var newPage = document.createElement('div');
+    newPage.classList.add('print-page');
+    newPage.innerHTML = '<div class="print-content"></div><span class="print-page-number"></span>';
+    document.getElementById('article').appendChild(newPage);
+    return newPage;
+}
+</script>
+
 </html>

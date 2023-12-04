@@ -1,9 +1,9 @@
 {% include toc_loader.html -%}
 
 {% if page.url == "/" -%}
-<aside id="toc-sidebar">
+<aside id="toc-sidebar" class="noPrint">
 {% else -%}
-<aside id="toc-sidebar" class="active">
+<aside id="toc-sidebar" class="noPrint active">
 {% endif -%}
     {{ TABLE_OF_CONTENTS }}
 </aside>
