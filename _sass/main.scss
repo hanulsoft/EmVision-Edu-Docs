@@ -13,6 +13,7 @@
   --button-hover-background-color: #{material-color("teal", "600")};
   --button-text-color: #{material-color("grey", "50")};
 
+  --image-background-color: #{material-color("blue-grey", "50")};
   --table-background-color-odd: #{material-color("blue-grey", "100")};
   --table-background-color-even: #{material-color("blue-grey", "50")};
   --blockquote-background-color: #{material-color("teal", "50")};
@@ -31,6 +32,7 @@
     --button-hover-background-color: #{material-color("teal", "600")};
     --button-text-color: #{material-color("grey", "50")};
 
+    --image-background-color: #{material-color("blue-grey", "800")};
     --table-background-color-odd: #{material-color("blue-grey", "800")};
     --table-background-color-even: #{material-color("blue-grey", "900")};
     --blockquote-background-color: #{material-color("teal", "900")};
@@ -104,6 +106,7 @@ article {
   max-width: $article-width;
   margin: auto;
   line-height: 1.8;
+  counter-reset: image-number;
   h1 {
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -112,6 +115,28 @@ article {
   h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;
+  }
+  img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+    background-color: var(--image-background-color);
+    @media (prefers-color-scheme: light) {
+      filter: brightness(110%) contrast(90%);
+    }
+    @media (prefers-color-scheme: dark) {
+      filter: brightness(80%) contrast(110%);
+    }
+  }
+  .alt-text {
+    counter-increment: image-number;
+    font-size: 1em;
+    color: var(--sub-text-color);
+    text-align: center;
+    margin-top: 0.5rem;
+    &:before {
+      content: "[그림 " counter(image-number) "] ";
+    }
   }
   blockquote {
     background-color: var(--blockquote-background-color);

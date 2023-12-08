@@ -1,3 +1,15 @@
+{% capture TEXTBOOK_CONTENT %}
+{% for toc_item in site.data.toc -%}
+    {% assign chapter_url = toc_item[0] | prepend: '/' | append: '/' -%}
+    {% assign chapter_doc = site.html_pages | where: 'dir', chapter_url | first -%}
+    {{ chapter_doc.content | markdownify }}
+    {% for sub_item in toc_item[1] -%}
+        {% assign sub_url = sub_item | prepend: chapter_url | append: '/' -%}
+        {% assign sub_doc = site.html_pages | where: 'dir', sub_url | first -%}
+        {{ sub_doc.content }}
+    {% endfor -%}
+{% endfor -%}
+{% endcapture -%}
 <!DOCTYPE html>
 <html lang="ko">
 {% include head.html -%}
@@ -17,18 +29,7 @@
         <ul id="toc-list"></ul>
         </div>
     </div>
-    <div id="print-raw-contents">        
-    {% for toc_item in site.data.toc -%}
-        {% assign chapter_url = toc_item[0] | prepend: '/' | append: '/' -%}
-        {% assign chapter_doc = site.html_pages | where: 'dir', chapter_url | first -%}
-        {{ chapter_doc.content | markdownify }}
-        {% for sub_item in toc_item[1] -%}
-            {% assign sub_url = sub_item | prepend: chapter_url | append: '/' -%}
-            {% assign sub_doc = site.html_pages | where: 'dir', sub_url | first -%}
-            {{ sub_doc.content | markdownify }} 
-        {% endfor -%}
-    {% endfor -%}
-    </div>
+    <div id="print-raw-contents">{{ TEXTBOOK_CONTENT }}</div>
 </article>
 </div>
 <hr class="noPrint">

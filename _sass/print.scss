@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap");
 
 @mixin printout {
   #print-container {
     background-color: gray;
     position: relative;
-    padding: .5rem;
+    padding: 0.5rem;
   }
   .print-page {
     width: 210mm; /* A4 너비 */
@@ -28,8 +28,8 @@
     padding: 0;
     counter-reset: toc-section1;
     li::before {
-      content: '';
-      font-family: 'Material Icons';
+      content: "";
+      font-family: "Material Icons";
       color: #838383;
       font-weight: bold;
       display: inline;
@@ -49,7 +49,7 @@
       }
       span.title::before {
         content: counter(toc-section1) " ";
-        margin-right: 0.0em;
+        margin-right: 0em;
       }
     }
     li.toc-level-2 {
@@ -57,12 +57,12 @@
       font-size: 1.2em;
       margin-left: 1em;
       a {
-        gap: .8em;
+        gap: 0.8em;
         color: #666;
       }
       span.title::before {
         content: counter(toc-section1) "." counter(toc-section2) " ";
-        margin-right: 0.0em;
+        margin-right: 0em;
       }
     }
     a {
@@ -102,7 +102,7 @@
     --color-gray: #6e7781;
 
     counter-reset: section;
-    font-family: 'Noto Serif KR', serif;
+    font-family: "Noto Serif KR", serif;
     font-size: 10pt;
     box-sizing: content-box;
     a {
@@ -111,7 +111,7 @@
     }
     li code,
     p code {
-      background-color: #D3D3D3;
+      background-color: #d3d3d3;
     }
     h1:not(.main-title) {
       counter-reset: subsection;
@@ -137,11 +137,18 @@
       margin: 1em 0em;
       padding: 0.5em 1em;
       border-left: 6px solid #838383;
-      background-color: #F3F3F3;
+      background-color: #f3f3f3;
       color: #333;
       p {
         margin: 0;
       }
+    }
+    img {
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+      background-color: #fff;
+      filter: brightness(100%) contrast(100%);
     }
     table:not(.rouge-table) {
       width: 100%;
@@ -153,12 +160,13 @@
         border-bottom: 1px solid #838383;
       }
       th {
-        background-color: #C3C3C3;
+        background-color: #c3c3c3;
       }
       td {
         border-left: 1px solid #838383;
       }
-      th, td {
+      th,
+      td {
         padding: 0.1em 1em;
         word-break: keep-all;
         word-wrap: break-word;
@@ -180,15 +188,13 @@
         color: #000;
       }
       li::before {
-        content: 'link';
+        content: "link";
         color: #838383;
         margin-right: 0.5em;
       }
     }
   }
 }
-
-
 
 @media print {
   @include printout;
@@ -217,7 +223,6 @@
     }
   }
 }
-
 
 @page {
   margin: 0mm;
