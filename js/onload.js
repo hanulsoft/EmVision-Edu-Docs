@@ -8,9 +8,13 @@ function showImageAlt() {
     if (!img.alt) return;
     let altText = img.alt;
     let altTextElement = document.createElement("div");
+    let imgWarpper = document.createElement("div");
+    imgWarpper.classList.add("img-wrapper");
+    img.parentNode.insertBefore(imgWarpper, img);
+    imgWarpper.appendChild(img);
+    imgWarpper.appendChild(altTextElement);
     altTextElement.classList.add("alt-text");
     altTextElement.innerHTML = altText;
-    img.parentNode.insertBefore(altTextElement, img.nextSibling);
   });
 }
 

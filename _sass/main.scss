@@ -35,7 +35,7 @@
     --image-background-color: #{material-color("blue-grey", "800")};
     --table-background-color-odd: #{material-color("blue-grey", "800")};
     --table-background-color-even: #{material-color("blue-grey", "900")};
-    --blockquote-background-color: #{material-color("teal", "900")};
+    --blockquote-background-color: #{material-color("teal", "900", 0.5)};
     --blockquote-border-color: #{material-color("teal", "800")};
     --ui-mark-color: #{material-color("teal", "500")};
 
@@ -98,7 +98,7 @@ header {
   }
 }
 div.sub-doc {
-  padding-top: 2rem;
+  padding-top: 0rem;
 }
 article {
   padding: 1rem;
@@ -106,11 +106,11 @@ article {
   max-width: $article-width;
   margin: auto;
   line-height: 1.8;
-  counter-reset: image-number;
   h1 {
     margin-top: 2rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--text-color);
+    counter-reset: image-number;
   }
   h2 {
     margin-top: 2rem;
@@ -134,9 +134,9 @@ article {
     color: var(--sub-text-color);
     text-align: center;
     margin-top: 0.5rem;
-    &:before {
-      content: "[그림 " counter(image-number) "] ";
-    }
+    // &:before {
+    //   content: "[그림 " counter(image-number) "] ";
+    // }
   }
   blockquote {
     background-color: var(--blockquote-background-color);
@@ -145,6 +145,11 @@ article {
     padding-left: 1rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    p,
+    ol,
+    ul {
+      margin: 0.5em 0;
+    }
   }
   ul {
     padding-left: 1rem;
@@ -162,6 +167,9 @@ article {
     }
     li {
       margin-bottom: 0.5rem;
+      ul {
+        margin-top: 0.5rem;
+      }
     }
     li p {
       display: inline;
@@ -192,6 +200,18 @@ article {
       width: 1%;
       white-space: nowrap;
     }
+  }
+  .img-grid-2 p {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0;
+  }
+  .img-grid-3 p {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0;
   }
 }
 footer {

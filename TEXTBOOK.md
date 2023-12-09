@@ -1,4 +1,4 @@
 ---
-title: 인쇄판 보기
+title: 인쇄판으로 보기
 layout: textbook
 ---

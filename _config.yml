@@ -37,6 +37,7 @@ sass:
 kramdown:
   toc_levels: "1"
   parse_block_html: true
+  syntax_highlighter: coderay
   syntax_highlighter_opts:
     span:
       line_numbers: false

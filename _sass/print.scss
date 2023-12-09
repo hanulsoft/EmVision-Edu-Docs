@@ -150,6 +150,19 @@
       background-color: #fff;
       filter: brightness(100%) contrast(100%);
     }
+    table.rouge-table {
+      border: 1px solid #ccc;
+      width: 100%;
+      td:nth-child(2) {
+        width: 100%;
+      }
+      .gl {
+        text-align: right;
+        color: #666;
+        padding-right: 0.5em;
+        border-right-color: #ccc;
+      }
+    }
     table:not(.rouge-table) {
       width: 100%;
       border-spacing: 0;
@@ -174,7 +187,10 @@
     }
     ul {
       li {
-        margin-bottom: 0.7em;
+        margin-bottom: 0.3em;
+        ul {
+          margin-top: 0.3rem;
+        }
       }
     }
     ul.print-link-list {
