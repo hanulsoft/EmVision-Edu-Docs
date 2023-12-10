@@ -6,10 +6,13 @@
     position: relative;
     padding: 0.5rem;
   }
+  #print-raw-contents {
+    display: none;
+  }
   .print-page {
-    width: 210mm; /* A4 너비 */
+    width: 196mm; /* A4 너비 */
     height: 297mm; /* A4 높이 */
-    padding: 20mm;
+    padding: 25mm;
     margin: 10mm auto;
     background-color: white;
     border: 1px solid #838383;
@@ -21,12 +24,12 @@
       bottom: 10mm;
       right: 10mm;
       font-size: 1em;
+      line-height: 1;
       color: #333;
     }
   }
   ul#toc-list {
     padding: 0;
-    counter-reset: toc-section1;
     li::before {
       content: "";
       font-family: "Material Icons";
@@ -40,29 +43,18 @@
       line-height: 1.1;
     }
     li.toc-level-1 {
-      counter-reset: toc-section2;
-      counter-increment: toc-section1;
       font-size: 1.5em;
       margin-left: 0;
       a {
         gap: 1em;
       }
-      span.title::before {
-        content: counter(toc-section1) " ";
-        margin-right: 0em;
-      }
     }
     li.toc-level-2 {
-      counter-increment: toc-section2;
       font-size: 1.2em;
       margin-left: 1em;
       a {
         gap: 0.8em;
         color: #666;
-      }
-      span.title::before {
-        content: counter(toc-section1) "." counter(toc-section2) " ";
-        margin-right: 0em;
       }
     }
     a {
@@ -85,10 +77,11 @@
     }
   }
   .print-content {
-    width: 100%;
+    padding: 10mm;
     color: black;
+    position: relative;
   }
-  #article.print {
+  article#article {
     --color-primary: #24292f;
     --color-background: #f6f8fa;
     --color-red: #cf222e;
@@ -101,7 +94,6 @@
     --color-purple: #8250df;
     --color-gray: #6e7781;
 
-    counter-reset: section;
     font-family: "Noto Serif KR", serif;
     font-size: 10pt;
     box-sizing: content-box;
@@ -114,24 +106,12 @@
       background-color: #d3d3d3;
     }
     h1:not(.main-title) {
-      counter-reset: subsection;
-      counter-increment: section;
       margin: 1em 0em;
       color: var(--ui-mark-color);
       border-color: var(--ui-mark-color);
-      &::before {
-        content: counter(section) ". ";
-        margin-right: 0.1em;
-        color: var(--ui-mark-color);
-      }
     }
     h2 {
-      counter-increment: subsection;
       margin: 1em 0em;
-      &::before {
-        content: counter(section) "." counter(subsection) ". ";
-        margin-right: 0.1em;
-      }
     }
     blockquote {
       margin: 1em 0em;
@@ -225,10 +205,15 @@
     margin: 0;
     padding: 0;
   }
-  .print-page {
-    margin: 0;
-    box-shadow: none;
-    border: none;
+  div.print-page {
+    margin: 0 0 !important;
+    // width: initial;
+    min-height: initial;
+    box-shadow: initial;
+  }
+  article#article,
+  div#print-container {
+    padding: 0 !important;
   }
 }
 @media screen {
@@ -242,7 +227,6 @@
 
 @page {
   margin: 0mm;
+  border: none;
   size: A4;
-  width: 210mm; /* A4 크기의 너비 */
-  height: 297mm; /* A4 크기의 높이 */
 }

@@ -154,7 +154,7 @@ article {
   ul {
     padding-left: 1rem;
     list-style: none;
-    li::before {
+    li:not(.task-list-item)::before {
       content: "arrow_right";
       font-family: "Material Icons";
       color: var(--ui-mark-color);
@@ -164,6 +164,11 @@ article {
       width: 1em;
       height: 1em;
       margin-left: -1em;
+    }
+    li.task-list-item {
+      input {
+        margin-right: 0.5rem;
+      }
     }
     li {
       margin-bottom: 0.5rem;
