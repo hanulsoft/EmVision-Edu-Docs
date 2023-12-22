@@ -151,6 +151,26 @@ article {
       margin: 0.5em 0;
     }
   }
+  ol {
+    list-style: none;
+    counter-reset: ordered-list;
+    padding-left: 1rem;
+    li strong {
+      font-weight: bold;
+      color: var(--ui-mark-color);
+    }
+    li:not(.task-list-item)::before {
+      counter-increment: ordered-list;
+      content: counter(ordered-list) ". ";
+      color: var(--ui-mark-color);
+      font-weight: bold;
+      display: inline;
+      font-size: 1em;
+      width: 1em;
+      height: 1em;
+      margin-left: -1em;
+    }
+  }
   ul {
     padding-left: 1rem;
     list-style: none;
@@ -171,9 +191,11 @@ article {
       }
     }
     li {
-      margin-bottom: 0.5rem;
-      ul {
-        margin-top: 0.5rem;
+      margin-bottom: 0.3em;
+      line-height: 1.3;
+      ul,
+      ol {
+        margin-top: 0.3em;
       }
     }
     li p {
