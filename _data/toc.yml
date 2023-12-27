@@ -9,5 +9,7 @@ EmVision_Getting_Started:
   - Troubleshooting_on_Getting_Started
 EmVision_DeepStream:
   - DeepStream_app
+EmVision_Jetson_Inference:
+  - Upgrade_and_Reinstall
 EmVision_Maintenance:
   - Maintenance_L4T
