@@ -31,8 +31,28 @@ function updateLinkEventListeners() {
   }
 }
 
+function imageClickEventLisners() {
+  const modal = document.getElementById("image-modal-warpper") as HTMLDivElement;
+  const modalImg = document.getElementById("image-modal") as HTMLImageElement;
+  const captionText = document.getElementById("modal-caption") as HTMLDivElement;
+  const closeSpan = document.getElementById("modal-close") as HTMLSpanElement;
+
+  document.querySelectorAll("img").forEach((img) => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
+    });
+  });
+
+  modal.onclick = () => {
+    modal.style.display = "none";
+  };
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   showImageAlt();
+  imageClickEventLisners();
   window.addEventListener("resize", updateLinkEventListeners);
   updateLinkEventListeners();
 });

@@ -33,8 +33,25 @@ function updateLinkEventListeners() {
         document.removeEventListener("click", handleInternalLinkClick);
     }
 }
+function imageClickEventLisners() {
+    const modal = document.getElementById("image-modal-warpper");
+    const modalImg = document.getElementById("image-modal");
+    const captionText = document.getElementById("modal-caption");
+    const closeSpan = document.getElementById("modal-close");
+    document.querySelectorAll("img").forEach((img) => {
+        img.addEventListener("click", () => {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+        });
+    });
+    modal.onclick = () => {
+        modal.style.display = "none";
+    };
+}
 document.addEventListener("DOMContentLoaded", function () {
     showImageAlt();
+    imageClickEventLisners();
     window.addEventListener("resize", updateLinkEventListeners);
     updateLinkEventListeners();
 });
