@@ -1,10 +1,10 @@
-EmVision_Introduction:
-  - Product_Specifications
-  - Software_Development_Environment
-  - Recommended_Peripherals
-EmVision_Getting_Started:
-  - Getting_Started_with_EmVision
-  - Getting_Started_with_Host_PC
+01_EmVision_Introduction:
+  - 01_Product_Specifications
+  - 02_Software_Development_Environment
+  - 03_Recommended_Peripherals
+02_EmVision_Getting_Started:
+  - 01_Getting_Started_with_EmVision
+  - 02_Getting_Started_with_Host_PC
   - Running_Demo_Applications
   - Troubleshooting_on_Getting_Started
 EmVision_DeepStream:

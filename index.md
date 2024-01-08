@@ -23,3 +23,5 @@ div#main-title {display: grid; grid-template-columns: 6em 1fr; gap: 1em; align-i
 <a onclick="toggleNav()" class="button">
     <span class="material-symbols-outlined">play_arrow</span>시작하기
 </a>
+
+![EmVision 테스트](./assets/emvision_test.png)
