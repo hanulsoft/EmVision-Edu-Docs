@@ -5,6 +5,7 @@
 
 :root {
   --background-color: #{material-color("grey", "50")};
+  --header-color: #{material-color("blue-grey", "1000")};
   --text-color: #{material-color("grey", "900")};
   --sub-text-color: #{material-color("grey", "800")};
   --link-color: #{material-color("grey", "700")};
@@ -24,6 +25,7 @@
 
   @media (prefers-color-scheme: dark) {
     --background-color: #{material-color("grey", "900")};
+    --header-color: #{material-color("grey", "50")};
     --text-color: #{material-color("grey", "400")};
     --sub-text-color: #{material-color("grey", "500")};
     --link-color: #{material-color("grey", "50")};
@@ -47,10 +49,9 @@
 @import "sidebar";
 @import "codeblock";
 
-$article-width: 1000px;
-
 body {
   font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -61,6 +62,14 @@ code {
   border-radius: 0.2em;
   li & {
     background-color: var(--table-background-color-odd);
+  }
+}
+a {
+  color: var(--link-color);
+  font-weight: bold;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 }
 a.button {
@@ -80,46 +89,27 @@ a.button {
 }
 
 header {
-  position: sticky;
-  top: 0;
-  padding: 0.5rem;
-  margin-bottom: 1em;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   background-color: var(--background-color);
-  z-index: 99;
-  a {
-    display: block;
-    cursor: pointer;
-  }
-  h1 {
-    margin: 0 1rem;
+}
+@media screen and (max-width: 999px) {
+  header {
+    background-color: var(--image-background-color);
   }
 }
-div.sub-doc {
-  padding-top: 0rem;
+aside#toc-sidebar {
+  background-color: var(--background-color);
 }
+
 article {
-  padding: 1rem;
-  margin-bottom: 1em;
-  max-width: $article-width;
-  margin: auto;
-  line-height: 1.8;
-  h1 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--text-color);
-    counter-reset: image-number;
+  h1,
+  h2,
+  h3 {
+    color: var(--header-color);
   }
-  h2 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+  h1 {
+    border-bottom-color: var(--text-color);
   }
   img {
-    display: block;
-    margin: 1rem auto;
-    max-width: 100%;
     background-color: var(--image-background-color);
     @media (prefers-color-scheme: light) {
       filter: brightness(110%) contrast(90%);
@@ -127,89 +117,30 @@ article {
     @media (prefers-color-scheme: dark) {
       filter: brightness(90%) contrast(110%);
     }
-  }
-  .alt-text {
-    counter-increment: image-number;
-    font-size: 1em;
-    color: var(--sub-text-color);
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-  blockquote {
-    background-color: var(--blockquote-background-color);
-    border-left: 0.5rem solid var(--blockquote-border-color);
-    padding: 0.5rem;
-    padding-left: 1rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    p,
-    ol,
-    ul {
-      margin: 0.5em 0;
+    & + .alt-text {
+      color: var(--sub-text-color);
     }
   }
+  blockquote {
+    border-left-color: var(--blockquote-border-color);
+  }
   ol {
-    list-style: none;
-    counter-reset: ordered-list;
-    padding-left: 1rem;
     li strong {
-      font-weight: bold;
       color: var(--ui-mark-color);
     }
     li:not(.task-list-item)::before {
-      counter-increment: ordered-list;
-      content: counter(ordered-list) ". ";
       color: var(--ui-mark-color);
-      font-weight: bold;
-      display: inline;
-      font-size: 1em;
-      width: 1em;
-      height: 1em;
-      margin-left: -1em;
     }
   }
   ul {
-    padding-left: 1rem;
-    list-style: none;
     li:not(.task-list-item)::before {
-      content: "arrow_right";
-      font-family: "Material Icons";
       color: var(--ui-mark-color);
-      font-weight: bold;
-      display: inline;
-      font-size: 1em;
-      width: 1em;
-      height: 1em;
-      margin-left: -1em;
-    }
-    li.task-list-item {
-      input {
-        margin-right: 0.5rem;
-      }
-    }
-    li {
-      margin-bottom: 0.3em;
-      line-height: 1.3;
-      ul,
-      ol {
-        margin-top: 0.3em;
-      }
-    }
-    li p {
-      display: inline;
     }
     li strong {
-      font-weight: bold;
       color: var(--ui-mark-color);
     }
   }
   table:not(.rouge-table) {
-    border-spacing: 2px;
-    min-width: 100%;
-    td,
-    th {
-      padding: 0.5rem;
-    }
     tbody tr {
       &:nth-child(odd) {
         background-color: var(--table-background-color-odd);
@@ -219,38 +150,14 @@ article {
         background-color: var(--table-background-color-even);
       }
     }
-    td:first-child {
-      font-weight: bold;
-      width: 1%;
-      white-space: nowrap;
-    }
-  }
-  .img-grid-2 p {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0;
-  }
-  .img-grid-3 p {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0;
   }
 }
 footer {
   padding: 1em;
   margin-top: 1em;
-  max-width: $article-width;
   margin: auto;
 }
-a {
-  color: var(--link-color);
-  font-weight: bold;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
 
+@import "content";
+@import "layout";
 @import "print";

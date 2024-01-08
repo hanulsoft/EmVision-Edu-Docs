@@ -1,0 +1,27 @@
+@media screen and (max-width: 999px) {
+  header {
+    position: sticky;
+    top: 0;
+  }
+  aside#toc-sidebar {
+    position: sticky;
+    top: 4rem;
+    max-height: 100vh;
+    transition: max-height 0.3s;
+    overflow: hidden;
+    z-index: 99;
+    line-height: 1.5;
+    ul li a {
+      padding: 0.8rem 0rem 0.8rem 1.5rem;
+    }
+    &.active {
+      max-height: 0;
+    }
+  }
+  article {
+    line-height: 1.9;
+    * {
+      scroll-margin-top: 5rem;
+    }
+  }
+}

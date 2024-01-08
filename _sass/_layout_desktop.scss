@@ -1,0 +1,53 @@
+$article-max-width: 1000px;
+$sidebar-width: 250px;
+
+@media screen and (min-width: 1000px) {
+  // 헤더
+  header {
+    position: sticky;
+    top: 0;
+    padding: 0.5rem;
+    margin-bottom: 1em;
+    a {
+      display: block;
+      cursor: pointer;
+    }
+    h1 {
+      margin: 0 1rem;
+    }
+  }
+
+  // 사이드바
+  aside#toc-sidebar {
+    padding: 0;
+    position: fixed;
+    width: $sidebar-width;
+    left: -$sidebar-width;
+    transition: left 0.3s;
+    height: 100vh;
+    &.active {
+      left: 0px;
+    }
+  }
+  div#content-warpper {
+    margin: 0;
+    transition: margin 0.3s;
+    main.open-navgation & {
+      margin-left: $sidebar-width;
+    }
+  }
+
+  // 바닥글
+  footer {
+    max-width: $article-max-width;
+  }
+
+  // 본문
+  article {
+    max-width: $article-max-width;
+    line-height: 1.8;
+    * {
+      scroll-margin-top: 4rem;
+    }
+  }
+}

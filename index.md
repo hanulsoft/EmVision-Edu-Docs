@@ -20,7 +20,7 @@ div#main-title {display: grid; grid-template-columns: 6em 1fr; gap: 1em; align-i
 
 하늘소프트 개발용/시험용/교육용 Vision AI 플랫폼
 
-<a onclick="toggleNav()" class="button">
+<a onclick="NavigationToggle()" class="button">
     <span class="material-symbols-outlined">play_arrow</span>시작하기
 </a>
 

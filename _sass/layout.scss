@@ -1,0 +1,13 @@
+// 헤더
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 99;
+  padding-left: 0.5rem;
+  gap: 0.5rem;
+}
+
+@import "_layout_desktop.scss";
+@import "_layout_tablet.scss";
+@import "_layout_mobile.scss";

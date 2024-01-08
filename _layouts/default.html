@@ -5,13 +5,15 @@
 {% if page.url == "/" -%}
 <main id="main-contents">
 {% else -%}
-<main id="main-contents" class="open-sidebar">
+<main id="main-contents" class="open-navgation">
 {% endif -%}
-    {% include nav.html -%}
     {% include header.html -%}
-    <article id="article">{{ CONTENT }}</article>
-    <hr>
-    {% include footer.html -%}
+    {% include nav.html -%}
+    <div id="content-warpper">
+        <article id="article">{{ CONTENT }}</article>
+        <hr>
+        {% include footer.html -%}
+    </div>
 </main>
 </body>
 </html>

@@ -113,6 +113,11 @@
     h2 {
       margin: 1em 0em;
     }
+    h3 {
+      &:before {
+        content: "";
+      }
+    }
     blockquote {
       margin: 1em 0em;
       padding: 0.5em 1em;
