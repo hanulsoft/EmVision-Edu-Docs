@@ -7,11 +7,13 @@ TABLE_OF_CONTENTS
 {% endcomment -%}
 
 {% capture TABLE_OF_CONTENTS %}
+{% assign url_params = page.url | remove: site.baseurl | split: '/' -%}
 <ul>
 {% for toc in site.data.toc -%}
 {%   assign chapter_url = "/" | append: toc[0] | append: "/" -%}
 {%   assign chapter_doc = site.html_pages | where: 'dir', chapter_url | first -%}
-<li class="toc-1"><a href="{{ chapter_url | absolute_url }}">{{ chapter_doc.title }}</a> 
+<li class="toc-1"><a href="{{ chapter_url | absolute_url }}">{{ chapter_doc.title }}</a>
+{%  if url_params[1] == toc[0] -%}
   <ul>
 {%   for doc_name in toc[1] -%}
 {%     assign doc_slug = doc_name | slugify -%}
@@ -21,6 +23,7 @@ TABLE_OF_CONTENTS
     <li class="toc-2"><a href="{{ doc_url | absolute_url }}">{{ doc.title }}</a></li>
 {%   endfor -%}
   </ul>
+{%  endif -%}
 </li>
 {% endfor -%}
 {% comment -%} 종이책 버전 {% endcomment %}
