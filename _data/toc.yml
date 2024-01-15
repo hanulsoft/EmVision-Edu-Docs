@@ -5,7 +5,8 @@
 02_EmVision_Getting_Started:
   - 01_Getting_Started_with_EmVision
   - 02_Getting_Started_with_Host_PC
-  - Running_Demo_Applications
+  - 03_Running_Demo_Applications
+  - 04_Using_Emvision_GitHub_Repository
   - Troubleshooting_on_Getting_Started
 EmVision_DeepStream:
   - DeepStream_app
