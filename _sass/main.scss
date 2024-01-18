@@ -102,9 +102,11 @@ aside#toc-sidebar {
 
 article {
   h1,
-  h2,
-  h3 {
+  h2 {
     color: var(--header-color);
+  }
+  h3 {
+    color: var(--text-color);
   }
   h1 {
     border-bottom-color: var(--text-color);

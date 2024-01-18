@@ -20,9 +20,18 @@ article {
     margin-bottom: 1rem;
   }
   h3 {
+    font-size: 1.3em;
+    line-height: 1.5;
+    margin-bottom: 0;
     &:before {
-      content: "> ";
+      content: "label_important";
       margin-right: 0.5rem;
+      vertical-align: middle;
+      font-family: "Material Icons";
+      line-height: 1;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
