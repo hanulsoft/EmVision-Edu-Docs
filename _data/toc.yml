@@ -14,3 +14,4 @@ EmVision_Jetson_Inference:
   - Upgrade_and_Reinstall
 EmVision_Maintenance:
   - Maintenance_L4T
+  - EmVision_Security
